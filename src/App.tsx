@@ -1,5 +1,6 @@
 import { Header } from './components/layout/Header.component';
 import { FeaturedProducts } from './components/featuredProducts/FeaturedProducts.component';
+import { NewArrivals } from './components/newArrivals/NewArrivals.component';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Header />
       <main className="container">
         <FeaturedProducts />
+        <NewArrivals />
       </main>
     </div>
   );

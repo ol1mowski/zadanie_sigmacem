@@ -4,7 +4,7 @@ import type { ProductsResponse } from '../../../types/product.types';
 
 export const PRODUCT_QUERY_KEYS = {
   all: ['products'] as const,
-  featured: () => [...PRODUCT_QUERY_KEYS.all, 'featured'] as const,
+  newArrivals: () => [...PRODUCT_QUERY_KEYS.all, 'newArrivals'] as const,
 } as const;
 
 const fetchProducts = async (params?: {
@@ -22,18 +22,18 @@ const fetchProducts = async (params?: {
   return response.json();
 };
 
-const fetchFeaturedProducts = async (): Promise<ProductsResponse> => {
+const fetchNewArrivals = async (): Promise<ProductsResponse> => {
   return fetchProducts({
     limit: API_CONFIG.FEATURED_LIMIT,
-    sortBy: 'rating',
+    sortBy: 'id',
     order: 'desc',
   });
 };
 
-export const useFeaturedProducts = () => {
+export const useNewArrivals = () => {
   return useQuery({
-    queryKey: PRODUCT_QUERY_KEYS.featured(),
-    queryFn: fetchFeaturedProducts,
+    queryKey: PRODUCT_QUERY_KEYS.newArrivals(),
+    queryFn: fetchNewArrivals,
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes (formerly cacheTime)
   });
