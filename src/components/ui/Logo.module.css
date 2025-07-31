@@ -1,0 +1,30 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-red-text);
+}
+
+.text {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black-text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .text {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text {
+    font-size: 1rem;
+  }
+}

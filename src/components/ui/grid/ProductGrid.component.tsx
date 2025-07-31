@@ -1,6 +1,6 @@
 import { ProductCard } from '../product/ProductCard.component';
 import type { Product } from '../../featuredProducts/types/product.types';
-import './ProductGrid.component.css';
+import styles from './ProductGrid.module.css';
 
 interface ProductGridProps {
   products: Product[];
@@ -17,13 +17,13 @@ export const ProductGrid = ({
 }: ProductGridProps) => {
   if (isLoading) {
     return (
-      <div className={`product-grid product-grid--loading ${className}`}>
+      <div className={`${styles.productGrid} ${styles.loading} ${className}`}>
         {Array.from({ length: 6 }, (_, index) => (
-          <div key={index} className="product-grid__skeleton">
-            <div className="product-grid__skeleton-image"></div>
-            <div className="product-grid__skeleton-content">
-              <div className="product-grid__skeleton-title"></div>
-              <div className="product-grid__skeleton-price"></div>
+          <div key={index} className={styles.skeleton}>
+            <div className={styles.skeletonImage}></div>
+            <div className={styles.skeletonContent}>
+              <div className={styles.skeletonTitle}></div>
+              <div className={styles.skeletonPrice}></div>
             </div>
           </div>
         ))}
@@ -33,12 +33,12 @@ export const ProductGrid = ({
 
   if (error) {
     return (
-      <div className={`product-grid product-grid--error ${className}`}>
-        <div className="product-grid__error">
-          <h3>Error loading products</h3>
-          <p>{error}</p>
+      <div className={`${styles.productGrid} ${styles.error} ${className}`}>
+        <div className={styles.errorContent}>
+          <h3 className={styles.errorTitle}>Error loading products</h3>
+          <p className={styles.errorMessage}>{error}</p>
           <button
-            className="product-grid__retry-btn"
+            className={styles.retryButton}
             onClick={() => window.location.reload()}
           >
             Try Again
@@ -50,17 +50,19 @@ export const ProductGrid = ({
 
   if (products.length === 0) {
     return (
-      <div className={`product-grid product-grid--empty ${className}`}>
-        <div className="product-grid__empty">
-          <h3>No products found</h3>
-          <p>Try adjusting your search criteria or browse our categories.</p>
+      <div className={`${styles.productGrid} ${styles.empty} ${className}`}>
+        <div className={styles.emptyContent}>
+          <h3 className={styles.emptyTitle}>No products found</h3>
+          <p className={styles.emptyMessage}>
+            Try adjusting your search criteria or browse our categories.
+          </p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`product-grid ${className}`}>
+    <div className={`${styles.productGrid} ${className}`}>
       {products.map(product => (
         <ProductCard key={product.id} product={product} />
       ))}

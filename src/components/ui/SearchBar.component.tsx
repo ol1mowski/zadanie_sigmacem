@@ -1,20 +1,19 @@
+import searchIcon from '../../assets/search_icon.svg';
+import styles from './SearchBar.module.css';
+
 interface SearchBarProps {
-  placeholder?: string;
   className?: string;
 }
 
-export const SearchBar = ({
-  placeholder = 'Search for products',
-  className = '',
-}: SearchBarProps) => {
+export const SearchBar = ({ className = '' }: SearchBarProps) => {
   return (
-    <div className={`search-container ${className}`}>
-      <img
-        src="/src/assets/search_icon.svg"
-        alt="Search"
-        className="search-icon"
+    <div className={`${styles.container} ${className}`}>
+      <img src={searchIcon} alt="Search" className={styles.icon} />
+      <input
+        type="text"
+        placeholder="Search products..."
+        className={styles.input}
       />
-      <input type="text" placeholder={placeholder} className="search-input" />
     </div>
   );
 };

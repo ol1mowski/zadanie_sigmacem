@@ -1,5 +1,5 @@
 import type { Product } from '../../featuredProducts/types/product.types';
-import './ProductCard.component.css';
+import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
   product: Product;
@@ -12,19 +12,19 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
   const displayImage = images?.[0] || thumbnail;
 
   return (
-    <article className={`product-card ${className}`}>
-      <div className="product-card__image-container">
+    <article className={`${styles.productCard} ${className}`}>
+      <div className={styles.imageContainer}>
         <img
           src={displayImage}
           alt={title}
-          className="product-card__image"
+          className={styles.image}
           loading="lazy"
         />
       </div>
 
-      <div className="product-card__content">
-        <h3 className="product-card__title">{title}</h3>
-        <p className="product-card__price">${price}</p>
+      <div className={styles.content}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.price}>${price}</p>
       </div>
     </article>
   );
