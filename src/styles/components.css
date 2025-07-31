@@ -75,7 +75,7 @@
 
 /* ===== HERO SECTION ===== */
 .hero {
-  background-color: var(--color-background);
+  background-color: white;
   padding: var(--spacing-3xl) 0;
   text-align: center;
 }
