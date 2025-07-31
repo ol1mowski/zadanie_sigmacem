@@ -1,0 +1,64 @@
+:root {
+  /* ===== COLORS ===== */
+  --color-red-text: #964f52;
+  --color-background: #e5e8eb;
+  --color-search-bg: #f2e8e8;
+  --color-black-text: #1c0d0f;
+
+  /* ===== TYPOGRAPHY ===== */
+  --font-family-primary:
+    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  --font-size-normal: 16px;
+  --font-size-header: 22px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-normal: 1.5;
+  --line-height-tight: 1.2;
+
+  /* ===== LAYOUT ===== */
+  --max-width-content: 960px;
+  --padding-content: 16px;
+  --padding-nav: 12px 40px;
+
+  /* ===== SPACING ===== */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* ===== BORDER RADIUS ===== */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+
+  /* ===== SHADOWS ===== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* ===== TRANSITIONS ===== */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* ===== Z-INDEX ===== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
