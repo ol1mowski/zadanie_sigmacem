@@ -4,6 +4,11 @@
   width: 100%;
 }
 
+.searchInputContainer {
+  position: relative;
+  width: 100%;
+}
+
 .icon {
   position: absolute;
   left: var(--spacing-sm);
@@ -13,12 +18,14 @@
   pointer-events: none;
   width: 20px;
   height: 20px;
+  z-index: 1;
 }
 
 .input {
   width: 100%;
   padding: var(--spacing-sm) var(--spacing-md);
   padding-left: 40px;
+  padding-right: 40px;
   background-color: var(--color-search-bg);
   border-radius: var(--border-radius-lg);
   font-size: var(--font-size-normal);
@@ -35,6 +42,73 @@
 .input:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(150, 79, 82, 0.1);
+}
+
+.clearButton {
+  position: absolute;
+  right: var(--spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-red-text);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+}
+
+.clearButton:hover {
+  background-color: rgba(150, 79, 82, 0.1);
+}
+
+.loadingIndicator {
+  position: absolute;
+  right: var(--spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--color-red-text);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 1;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fee;
+  color: #c53030;
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.75rem;
+  margin-top: 4px;
+  border: 1px solid #feb2b2;
+  z-index: var(--z-dropdown);
+}
+
+.searchResults {
+  z-index: var(--z-dropdown);
 }
 
 /* Responsive Design */

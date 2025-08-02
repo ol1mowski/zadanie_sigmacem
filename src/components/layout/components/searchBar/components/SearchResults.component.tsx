@@ -1,0 +1,85 @@
+import type { Product } from '../../../../../types/product.types';
+import styles from './SearchResults.module.css';
+
+interface SearchResultsProps {
+  products: Product[];
+  isLoading: boolean;
+  isVisible: boolean;
+  onProductSelect?: (product: Product) => void;
+  className?: string;
+}
+
+export const SearchResults = ({
+  products,
+  isLoading,
+  isVisible,
+  onProductSelect,
+  className = '',
+}: SearchResultsProps) => {
+  if (!isVisible) {
+    return null;
+  }
+
+  const handleProductClick = (product: Product) => {
+    onProductSelect?.(product);
+  };
+
+  if (isLoading) {
+    return (
+      <div className={`${styles.container} ${className}`}>
+        <div className={styles.loadingContainer}>
+          <div className={styles.loadingSpinner} />
+          <span className={styles.loadingText}>Wyszukiwanie produktów...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (products.length === 0) {
+    return (
+      <div className={`${styles.container} ${className}`}>
+        <div className={styles.emptyState}>
+          <span className={styles.emptyText}>Brak wyników wyszukiwania</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${styles.container} ${className}`}>
+      <div className={styles.resultsList}>
+        {products.map(product => (
+          <div
+            key={product.id}
+            className={styles.resultItem}
+            onClick={() => handleProductClick(product)}
+            role="button"
+            aria-label={`Wybierz produkt: ${product.title}`}
+          >
+            <div className={styles.productImage}>
+              <img src={product.thumbnail} alt={product.title} loading="lazy" />
+            </div>
+            <div className={styles.productInfo}>
+              <h4 className={styles.productTitle}>{product.title}</h4>
+              <p className={styles.productDescription}>
+                {product.description.length > 100
+                  ? `${product.description.substring(0, 100)}...`
+                  : product.description}
+              </p>
+              <div className={styles.productPrice}>
+                <span className={styles.price}>
+                  {product.price.toFixed(2)} zł
+                </span>
+                {product.discountPercentage > 0 && (
+                  <span className={styles.discount}>
+                    -{product.discountPercentage.toFixed(0)}%
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
