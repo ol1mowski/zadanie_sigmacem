@@ -1,5 +1,5 @@
 import { Logo } from '../ui/Logo.component';
-import { SearchBar } from '../ui/SearchBar.component';
+import { SearchBar } from './components/searchBar/SearchBar.component';
 import styles from './Header.module.css';
 
 interface HeaderProps {
