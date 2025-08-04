@@ -33,8 +33,8 @@ export class ErrorBoundary extends Component<Props, State> {
 
       return (
         <ErrorDisplay
-          title="Coś poszło nie tak"
-          message="Wystąpił nieoczekiwany błąd. Spróbuj odświeżyć stronę."
+          title="Something went wrong"
+          message="An unexpected error occurred. Please try refreshing the page."
           error={this.state.error}
           onRetry={() => this.setState({ hasError: false, error: undefined })}
         />

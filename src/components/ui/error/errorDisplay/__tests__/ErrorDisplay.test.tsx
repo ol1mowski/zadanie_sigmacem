@@ -6,9 +6,9 @@ describe('ErrorDisplay', () => {
   it('should render with default props', () => {
     render(<ErrorDisplay />);
 
-    expect(screen.getByText('Błąd')).toBeInTheDocument();
+    expect(screen.getByText('Error')).toBeInTheDocument();
     expect(
-      screen.getByText('Wystąpił błąd podczas ładowania danych.')
+      screen.getByText('An error occurred while loading the data.')
     ).toBeInTheDocument();
     expect(screen.getByTestId('retry-button')).toBeInTheDocument();
   });
@@ -36,20 +36,20 @@ describe('ErrorDisplay', () => {
     const error = new Error('Test error');
     render(<ErrorDisplay error={error} />);
 
-    expect(screen.getByText('Szczegóły błędu')).toBeInTheDocument();
+    expect(screen.getByText('Error details')).toBeInTheDocument();
     expect(screen.getByText(/Test error/)).toBeInTheDocument();
   });
 
   it('should not show error details when no error is provided', () => {
     render(<ErrorDisplay />);
 
-    expect(screen.queryByText('Szczegóły błędu')).not.toBeInTheDocument();
+    expect(screen.queryByText('Error details')).not.toBeInTheDocument();
   });
 
   it('should render error icon', () => {
     render(<ErrorDisplay />);
 
-    const icon = screen.getByText('Błąd').closest('div')?.querySelector('svg');
+    const icon = screen.getByText('Error').closest('div')?.querySelector('svg');
     expect(icon).toBeInTheDocument();
   });
 
@@ -59,7 +59,7 @@ describe('ErrorDisplay', () => {
     const title = screen.getByRole('heading', { level: 3 });
     const button = screen.getByRole('button');
 
-    expect(title).toHaveTextContent('Błąd');
-    expect(button).toHaveTextContent('Spróbuj ponownie');
+    expect(title).toHaveTextContent('Error');
+    expect(button).toHaveTextContent('Try again');
   });
 });

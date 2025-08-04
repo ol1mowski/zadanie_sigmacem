@@ -9,8 +9,8 @@ interface ErrorDisplayProps {
 }
 
 export const ErrorDisplay = ({
-  title = 'Błąd',
-  message = 'Wystąpił błąd podczas ładowania danych.',
+  title = 'Error',
+  message = 'An error occurred while loading the data.',
   error,
   onRetry,
   className = '',
@@ -48,7 +48,7 @@ export const ErrorDisplay = ({
 
         {error && (
           <details className={styles.errorDetails}>
-            <summary className={styles.errorSummary}>Szczegóły błędu</summary>
+            <summary className={styles.errorSummary}>Error details</summary>
             <pre className={styles.errorStack}>{error.stack}</pre>
           </details>
         )}
@@ -59,7 +59,7 @@ export const ErrorDisplay = ({
           type="button"
           data-testid="retry-button"
         >
-          Spróbuj ponownie
+          Try again
         </button>
       </div>
     </div>

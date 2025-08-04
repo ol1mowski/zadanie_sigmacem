@@ -31,7 +31,7 @@ export const ProductGrid = ({
     return (
       <div className={`${styles.productGrid} ${className}`}>
         <ErrorDisplay
-          title="Błąd ładowania produktów"
+          title="Error loading products"
           message={error}
           onRetry={() => window.location.reload()}
         />

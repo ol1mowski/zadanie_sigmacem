@@ -104,7 +104,7 @@ describe('NewArrivals', () => {
       </TestWrapper>
     );
 
-    expect(screen.getByText('Błąd ładowania produktów')).toBeInTheDocument();
+    expect(screen.getByText('Error loading products')).toBeInTheDocument();
     expect(screen.getByText(errorMessage)).toBeInTheDocument();
   });
 

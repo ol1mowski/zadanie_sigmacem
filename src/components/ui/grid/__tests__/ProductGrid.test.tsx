@@ -45,9 +45,9 @@ describe('ProductGrid', () => {
     const errorMessage = 'Failed to load products';
     render(<ProductGrid products={[]} error={errorMessage} />);
 
-    expect(screen.getByText('Błąd ładowania produktów')).toBeInTheDocument();
+    expect(screen.getByText('Error loading products')).toBeInTheDocument();
     expect(screen.getByText(errorMessage)).toBeInTheDocument();
-    expect(screen.getByText('Spróbuj ponownie')).toBeInTheDocument();
+    expect(screen.getByText('Try again')).toBeInTheDocument();
   });
 
   it('should show empty state when no products', () => {
@@ -73,7 +73,7 @@ describe('ProductGrid', () => {
     const skeletons = screen.getAllByTestId('loading-skeleton');
     expect(skeletons).toHaveLength(6);
     expect(
-      screen.queryByText('Błąd ładowania produktów')
+      screen.queryByText('Error loading products')
     ).not.toBeInTheDocument();
   });
 
@@ -81,7 +81,7 @@ describe('ProductGrid', () => {
     const errorMessage = 'Network error';
     render(<ProductGrid products={[]} error={errorMessage} />);
 
-    expect(screen.getByText('Błąd ładowania produktów')).toBeInTheDocument();
+    expect(screen.getByText('Error loading products')).toBeInTheDocument();
     expect(screen.queryByText('No products found')).not.toBeInTheDocument();
   });
 
