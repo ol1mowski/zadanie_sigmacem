@@ -21,10 +21,6 @@ export const SearchResults = ({
     return null;
   }
 
-  const handleProductClick = (product: Product) => {
-    onProductSelect?.(product);
-  };
-
   if (isLoading) {
     return (
       <div className={`${styles.container} ${className}`}>
@@ -53,7 +49,7 @@ export const SearchResults = ({
           <div
             key={product.id}
             className={styles.resultItem}
-            onClick={() => handleProductClick(product)}
+            onClick={() => onProductSelect?.(product)}
             role="button"
             aria-label={`Select product: ${product.title}`}
           >
