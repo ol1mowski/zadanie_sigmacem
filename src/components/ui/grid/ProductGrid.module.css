@@ -20,50 +20,6 @@
   }
 }
 
-/* Error state styles */
-.error {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 300px;
-}
-
-.errorContent {
-  text-align: center;
-  padding: var(--spacing-xl);
-  background: white;
-  border-radius: var(--border-radius-md);
-  max-width: 400px;
-}
-
-.errorTitle {
-  color: var(--color-black-text);
-  margin-bottom: var(--spacing-md);
-  font-size: var(--font-size-header);
-}
-
-.errorMessage {
-  color: var(--color-black-text);
-  opacity: 0.6;
-  margin-bottom: var(--spacing-lg);
-  line-height: var(--line-height-normal);
-}
-
-.retryButton {
-  background: var(--color-red-text);
-  color: white;
-  border: none;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: var(--border-radius-md);
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-  transition: background var(--transition-fast);
-}
-
-.retryButton:hover {
-  background: var(--color-black-text);
-}
-
 /* Empty state styles */
 .empty {
   display: flex;

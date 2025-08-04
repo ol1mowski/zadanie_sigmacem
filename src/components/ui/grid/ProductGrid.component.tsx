@@ -1,5 +1,6 @@
 import { ProductCard } from '../product/ProductCard.component';
 import { LoadingSkeleton } from '../loading/loadingSkeleton/LoadingSkeleton.component';
+import { ErrorDisplay } from '../error/errorDisplay/ErrorDisplay.component';
 import type { Product } from '../../../types/product.types';
 import styles from './ProductGrid.module.css';
 
@@ -28,17 +29,12 @@ export const ProductGrid = ({
 
   if (error) {
     return (
-      <div className={`${styles.productGrid} ${styles.error} ${className}`}>
-        <div className={styles.errorContent}>
-          <h3 className={styles.errorTitle}>Error loading products</h3>
-          <p className={styles.errorMessage}>{error}</p>
-          <button
-            className={styles.retryButton}
-            onClick={() => window.location.reload()}
-          >
-            Try Again
-          </button>
-        </div>
+      <div className={`${styles.productGrid} ${className}`}>
+        <ErrorDisplay
+          title="Błąd ładowania produktów"
+          message={error}
+          onRetry={() => window.location.reload()}
+        />
       </div>
     );
   }
