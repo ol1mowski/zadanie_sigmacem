@@ -1,10 +1,10 @@
 .header {
   background-color: var(--color-background);
-  box-shadow: var(--shadow-sm);
   position: sticky;
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
+  border-bottom: 1px solid var(--color-skeleton-bg);
   top: 0;
   z-index: var(--z-sticky);
 }
@@ -13,6 +13,7 @@
   margin: 0 auto;
   padding: var(--padding-nav);
   display: flex;
+  gap: 16px;
   align-items: center;
   justify-content: space-between;
 }
