@@ -6,7 +6,6 @@
   overflow: hidden;
   cursor: pointer;
   transition: transform var(--transition-fast);
-  box-shadow: var(--shadow-sm);
   will-change: transform;
 }
 
