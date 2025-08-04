@@ -2,10 +2,10 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NewArrivals } from '../NewArrivals.component';
-import { useNewArrivals } from '../hooks/useProducts.hook';
+import { useNewArrivals } from '../../../hooks/useProducts.hook';
 import type { ProductsResponse } from '../../../types/product.types';
 
-vi.mock('../hooks/useProducts.hook');
+vi.mock('../../../hooks/useProducts.hook');
 const mockUseNewArrivals = vi.mocked(useNewArrivals);
 
 const mockProducts = [

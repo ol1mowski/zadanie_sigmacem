@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useDebounce } from '../../../../hooks/useDebounce.hook';
 import searchIcon from '../../../../assets/search_icon.svg';
-import { useProductSearch } from './hooks/useProductSearch.hook';
+import { useProductSearch } from '../../../../hooks/useProducts.hook';
 import { SearchResults } from './components/SearchResults.component';
 import type { Product } from '../../../../types/product.types';
 import styles from './SearchBar.module.css';

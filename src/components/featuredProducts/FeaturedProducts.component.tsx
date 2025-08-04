@@ -1,5 +1,5 @@
 import { ProductGrid } from '../ui/grid/ProductGrid.component';
-import { useFeaturedProducts } from './hooks/useProducts.hook';
+import { useFeaturedProducts } from '../../hooks/useProducts.hook';
 import styles from './FeaturedProducts.module.css';
 
 interface FeaturedProductsProps {

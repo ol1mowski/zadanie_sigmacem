@@ -1,5 +1,5 @@
 import { ProductGrid } from '../ui/grid/ProductGrid.component';
-import { useNewArrivals } from './hooks/useProducts.hook';
+import { useNewArrivals } from '../../hooks/useProducts.hook';
 import styles from './NewArrivals.module.css';
 
 interface NewArrivalsProps {
