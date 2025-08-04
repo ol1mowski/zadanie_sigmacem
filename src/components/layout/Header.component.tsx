@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Logo } from '../ui/Logo.component';
+import { Logo } from '../ui';
 import { SearchBar } from './components/searchBar/SearchBar.component';
 import type { Product } from '../../types/product.types';
 import styles from './Header.module.css';
