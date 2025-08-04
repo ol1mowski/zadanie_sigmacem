@@ -1,4 +1,4 @@
-import { Layout } from './components/layout';
+import { Layout } from './components/layout/Layout.component';
 import { FeaturedProducts } from './components/featuredProducts/FeaturedProducts.component';
 import { NewArrivals } from './components/newArrivals/NewArrivals.component';
 import { ErrorBoundary } from './components/ui/error/errorBoundary/ErrorBoundary.component';

@@ -11,7 +11,7 @@
 
 .header {
   text-align: left;
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-lg);
 }
 
 .title {

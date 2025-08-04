@@ -42,15 +42,18 @@
 }
 
 .errorSummary {
-  color: var(--color-red-text);
+  background-color: rgba(150, 79, 82, 0.1);
+  border: 1px solid rgba(150, 79, 82, 0.2);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
   cursor: pointer;
-  font-weight: var(--font-weight-medium);
-  margin-bottom: var(--spacing-sm);
-  user-select: none;
+  transition: background-color var(--transition-fast);
+  will-change: background-color;
 }
 
 .errorSummary:hover {
-  text-decoration: underline;
+  background-color: rgba(150, 79, 82, 0.15);
 }
 
 .errorStack {
@@ -68,19 +71,21 @@
 }
 
 .retryButton {
-  background: var(--color-red-text);
+  background-color: var(--color-red-text);
   color: white;
   border: none;
-  padding: var(--spacing-sm) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--border-radius-md);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-normal);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: all var(--transition-fast);
-  font-size: var(--font-size-normal);
+  will-change: background-color, transform;
 }
 
 .retryButton:hover {
-  background: var(--color-black-text);
+  background-color: var(--color-black-text);
   transform: translateY(-1px);
 }
 

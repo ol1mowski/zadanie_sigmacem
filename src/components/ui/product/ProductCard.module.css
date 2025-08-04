@@ -7,6 +7,7 @@
   cursor: pointer;
   transition: transform var(--transition-fast);
   box-shadow: var(--shadow-sm);
+  will-change: transform;
 }
 
 .productCard:hover {
@@ -37,7 +38,7 @@
 
 .title {
   font-size: var(--font-size-normal);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   color: var(--color-black-text);
   margin: 0;
   line-height: var(--line-height-tight);

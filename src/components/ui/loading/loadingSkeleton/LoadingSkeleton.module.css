@@ -1,5 +1,5 @@
 .skeleton {
-  background: white;
+  background: var(--color-skeleton-bg);
   border-radius: var(--border-radius-md);
   overflow: hidden;
   animation: skeletonPulse 1.5s ease-in-out infinite;
@@ -8,7 +8,7 @@
 .skeletonImage {
   width: 100%;
   height: 200px;
-  background: var(--color-background);
+  background: var(--color-skeleton-bg);
   animation: skeletonPulse 1.5s ease-in-out infinite;
 }
 
@@ -21,7 +21,7 @@
 
 .skeletonTitle {
   height: 16px;
-  background: var(--color-background);
+  background: var(--color-skeleton-bg);
   border-radius: var(--border-radius-sm);
   width: 80%;
   animation: skeletonPulse 1.5s ease-in-out infinite;
@@ -29,7 +29,7 @@
 
 .skeletonPrice {
   height: 14px;
-  background: var(--color-background);
+  background: var(--color-skeleton-bg);
   border-radius: var(--border-radius-sm);
   width: 40%;
   animation: skeletonPulse 1.5s ease-in-out infinite;
@@ -37,7 +37,7 @@
 
 .skeletonText {
   height: 16px;
-  background: var(--color-background);
+  background: var(--color-skeleton-bg);
   border-radius: var(--border-radius-sm);
   width: 100%;
   animation: skeletonPulse 1.5s ease-in-out infinite;

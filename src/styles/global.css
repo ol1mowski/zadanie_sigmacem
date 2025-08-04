@@ -66,6 +66,7 @@ a {
   color: var(--color-red-text);
   text-decoration: none;
   transition: color var(--transition-fast);
+  will-change: color;
 }
 
 a:hover {
@@ -103,6 +104,7 @@ a:hover {
 .btn-primary {
   background-color: var(--color-red-text);
   color: white;
+  will-change: background-color, transform;
 }
 
 .btn-primary:hover {
@@ -115,6 +117,7 @@ a:hover {
   background-color: var(--color-search-bg);
   color: var(--color-black-text);
   border: 1px solid var(--color-red-text);
+  will-change: background-color;
 }
 
 .btn-secondary:hover {
