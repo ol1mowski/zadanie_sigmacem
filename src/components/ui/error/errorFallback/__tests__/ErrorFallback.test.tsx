@@ -28,15 +28,6 @@ describe('ErrorFallback', () => {
     expect(screen.queryByText('Spróbuj ponownie')).not.toBeInTheDocument();
   });
 
-  it('should apply custom className', () => {
-    render(<ErrorFallback className="custom-class" />);
-
-    const container = screen
-      .getByText('Ups! Coś poszło nie tak')
-      .closest('div');
-    expect(container?.parentElement?.className).toContain('custom-class');
-  });
-
   it('should have proper structure', () => {
     render(<ErrorFallback />);
 

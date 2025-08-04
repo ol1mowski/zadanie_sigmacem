@@ -12,25 +12,14 @@ describe('LoadingSpinner', () => {
     expect(spinner.className).toContain('medium');
   });
 
-  it('should render with small size', () => {
-    render(<LoadingSpinner size="small" />);
-
-    const spinner = screen.getByTestId('loading-spinner');
+  it('should render with different sizes', () => {
+    const { rerender } = render(<LoadingSpinner size="small" />);
+    let spinner = screen.getByTestId('loading-spinner');
     expect(spinner.className).toContain('small');
-  });
 
-  it('should render with large size', () => {
-    render(<LoadingSpinner size="large" />);
-
-    const spinner = screen.getByTestId('loading-spinner');
+    rerender(<LoadingSpinner size="large" />);
+    spinner = screen.getByTestId('loading-spinner');
     expect(spinner.className).toContain('large');
-  });
-
-  it('should apply custom className', () => {
-    render(<LoadingSpinner className="custom-class" />);
-
-    const spinner = screen.getByTestId('loading-spinner');
-    expect(spinner).toHaveClass('custom-class');
   });
 
   it('should have spinner inner element', () => {

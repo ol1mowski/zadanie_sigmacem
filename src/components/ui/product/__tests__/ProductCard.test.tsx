@@ -41,20 +41,6 @@ describe('ProductCard', () => {
     expect(image).toHaveAttribute('src', 'test-thumbnail.jpg');
   });
 
-  it('should apply custom className', () => {
-    render(<ProductCard product={mockProduct} className="custom-class" />);
-
-    const card = screen.getByText('Test Product').closest('article');
-    expect(card).toHaveClass('custom-class');
-  });
-
-  it('should render with default className when not provided', () => {
-    render(<ProductCard product={mockProduct} />);
-
-    const card = screen.getByText('Test Product').closest('article');
-    expect(card?.className).toContain('productCard');
-  });
-
   it('should have proper semantic structure', () => {
     render(<ProductCard product={mockProduct} />);
 

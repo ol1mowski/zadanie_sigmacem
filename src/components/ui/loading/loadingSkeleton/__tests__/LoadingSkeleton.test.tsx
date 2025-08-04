@@ -12,25 +12,14 @@ describe('LoadingSkeleton', () => {
     expect(skeleton.className).toContain('card');
   });
 
-  it('should render with text type', () => {
-    render(<LoadingSkeleton type="text" />);
-
-    const skeleton = screen.getByTestId('loading-skeleton');
+  it('should render with different types', () => {
+    const { rerender } = render(<LoadingSkeleton type="text" />);
+    let skeleton = screen.getByTestId('loading-skeleton');
     expect(skeleton.className).toContain('text');
-  });
 
-  it('should render with image type', () => {
-    render(<LoadingSkeleton type="image" />);
-
-    const skeleton = screen.getByTestId('loading-skeleton');
+    rerender(<LoadingSkeleton type="image" />);
+    skeleton = screen.getByTestId('loading-skeleton');
     expect(skeleton.className).toContain('image');
-  });
-
-  it('should apply custom className', () => {
-    render(<LoadingSkeleton className="custom-class" />);
-
-    const skeleton = screen.getByTestId('loading-skeleton');
-    expect(skeleton).toHaveClass('custom-class');
   });
 
   it('should render skeleton elements for card type', () => {

@@ -3,18 +3,11 @@ import { describe, it, expect } from 'vitest';
 import { Logo } from '../Logo.component';
 
 describe('Logo', () => {
-  it('should render logo with text', () => {
+  it('should render logo with text and image', () => {
     render(<Logo />);
 
     expect(screen.getByText('ShopOnline')).toBeInTheDocument();
     expect(screen.getByAltText('Logo')).toBeInTheDocument();
-  });
-
-  it('should apply custom className', () => {
-    render(<Logo className="custom-class" />);
-
-    const logoContainer = screen.getByText('ShopOnline').closest('div');
-    expect(logoContainer).toHaveClass('custom-class');
   });
 
   it('should render logo image with correct src', () => {

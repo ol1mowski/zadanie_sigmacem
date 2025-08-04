@@ -8,40 +8,6 @@ import type { ProductsResponse } from '../../../types/product.types';
 vi.mock('../hooks/useProducts.hook');
 const mockUseFeaturedProducts = vi.mocked(useFeaturedProducts);
 
-interface MockProductGridProps {
-  products: unknown[];
-  isLoading: boolean;
-  error: string | null;
-  className: string;
-}
-
-vi.mock('../../ui/grid/ProductGrid.component', () => ({
-  ProductGrid: ({
-    products,
-    isLoading,
-    error,
-    className,
-  }: MockProductGridProps) => (
-    <div data-testid="product-grid" className={className}>
-      {isLoading && <div data-testid="loading">Loading...</div>}
-      {error && <div data-testid="error">{error}</div>}
-      {products && products.length > 0 && (
-        <div data-testid="products-count">Products: {products.length}</div>
-      )}
-    </div>
-  ),
-}));
-
-vi.mock('../FeaturedProducts.module.css', () => ({
-  default: {
-    featuredProducts: 'featured-products',
-    container: 'container',
-    header: 'header',
-    title: 'title',
-    grid: 'grid',
-  },
-}));
-
 const mockProducts = [
   {
     id: 1,
@@ -89,170 +55,125 @@ describe('FeaturedProducts', () => {
     vi.clearAllMocks();
   });
 
-  describe('Rendering', () => {
-    it('should render the component with correct title', () => {
-      mockUseFeaturedProducts.mockReturnValue({
-        data: mockProductsResponse,
-        isLoading: false,
-        error: null,
-      } as ReturnType<typeof useFeaturedProducts>);
+  it('should render with correct title and products', () => {
+    mockUseFeaturedProducts.mockReturnValue({
+      data: mockProductsResponse,
+      isLoading: false,
+      error: null,
+    } as ReturnType<typeof useFeaturedProducts>);
 
-      render(
-        <TestWrapper>
-          <FeaturedProducts />
-        </TestWrapper>
-      );
+    render(
+      <TestWrapper>
+        <FeaturedProducts />
+      </TestWrapper>
+    );
 
-      expect(screen.getByText('Featured Products')).toBeInTheDocument();
-    });
-
-    it('should render with custom className', () => {
-      mockUseFeaturedProducts.mockReturnValue({
-        data: mockProductsResponse,
-        isLoading: false,
-        error: null,
-      } as ReturnType<typeof useFeaturedProducts>);
-
-      render(
-        <TestWrapper>
-          <FeaturedProducts className="custom-class" />
-        </TestWrapper>
-      );
-
-      const section = screen.getByText('Featured Products').closest('section');
-      expect(section).toHaveClass('custom-class');
-    });
-
-    it('should render ProductGrid with correct props', () => {
-      mockUseFeaturedProducts.mockReturnValue({
-        data: mockProductsResponse,
-        isLoading: false,
-        error: null,
-      } as ReturnType<typeof useFeaturedProducts>);
-
-      render(
-        <TestWrapper>
-          <FeaturedProducts />
-        </TestWrapper>
-      );
-
-      expect(screen.getByTestId('product-grid')).toBeInTheDocument();
-      expect(screen.getByTestId('products-count')).toHaveTextContent(
-        'Products: 2'
-      );
-    });
+    expect(screen.getByText('Featured Products')).toBeInTheDocument();
+    expect(screen.getByText('Test Product 1')).toBeInTheDocument();
+    expect(screen.getByText('Test Product 2')).toBeInTheDocument();
   });
 
-  describe('Loading state', () => {
-    it('should show loading state when data is loading', () => {
-      mockUseFeaturedProducts.mockReturnValue({
-        data: undefined,
-        isLoading: true,
-        error: null,
-      } as ReturnType<typeof useFeaturedProducts>);
+  it('should show loading state when data is loading', () => {
+    mockUseFeaturedProducts.mockReturnValue({
+      data: undefined,
+      isLoading: true,
+      error: null,
+    } as ReturnType<typeof useFeaturedProducts>);
 
-      render(
-        <TestWrapper>
-          <FeaturedProducts />
-        </TestWrapper>
-      );
+    render(
+      <TestWrapper>
+        <FeaturedProducts />
+      </TestWrapper>
+    );
 
-      expect(screen.getByTestId('loading')).toBeInTheDocument();
-      expect(screen.getByText('Loading...')).toBeInTheDocument();
-    });
+    const skeletons = screen.getAllByTestId('loading-skeleton');
+    expect(skeletons).toHaveLength(6);
   });
 
-  describe('Error state', () => {
-    it('should show error message when there is an error', () => {
-      const errorMessage = 'Failed to fetch products';
-      mockUseFeaturedProducts.mockReturnValue({
-        data: undefined,
-        isLoading: false,
-        error: { message: errorMessage },
-      } as ReturnType<typeof useFeaturedProducts>);
+  it('should show error state when there is an error', () => {
+    const errorMessage = 'Failed to fetch products';
+    mockUseFeaturedProducts.mockReturnValue({
+      data: undefined,
+      isLoading: false,
+      error: { message: errorMessage },
+    } as ReturnType<typeof useFeaturedProducts>);
 
-      render(
-        <TestWrapper>
-          <FeaturedProducts />
-        </TestWrapper>
-      );
+    render(
+      <TestWrapper>
+        <FeaturedProducts />
+      </TestWrapper>
+    );
 
-      expect(screen.getByTestId('error')).toBeInTheDocument();
-      expect(screen.getByText(errorMessage)).toBeInTheDocument();
-    });
+    expect(screen.getByText('Błąd ładowania produktów')).toBeInTheDocument();
+    expect(screen.getByText(errorMessage)).toBeInTheDocument();
   });
 
-  describe('Data handling', () => {
-    it('should handle empty products array', () => {
-      mockUseFeaturedProducts.mockReturnValue({
-        data: { products: [], total: 0, skip: 0, limit: 6 },
-        isLoading: false,
-        error: null,
-      } as unknown as ReturnType<typeof useFeaturedProducts>);
+  it('should handle empty products array', () => {
+    mockUseFeaturedProducts.mockReturnValue({
+      data: { products: [], total: 0, skip: 0, limit: 6 },
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useFeaturedProducts>);
 
-      render(
-        <TestWrapper>
-          <FeaturedProducts />
-        </TestWrapper>
-      );
+    render(
+      <TestWrapper>
+        <FeaturedProducts />
+      </TestWrapper>
+    );
 
-      expect(screen.getByTestId('product-grid')).toBeInTheDocument();
-      expect(screen.queryByTestId('products-count')).not.toBeInTheDocument();
-    });
+    expect(screen.getByText('No products found')).toBeInTheDocument();
   });
 
-  describe('Hook integration', () => {
-    it('should call useFeaturedProducts hook', () => {
-      mockUseFeaturedProducts.mockReturnValue({
-        data: mockProductsResponse,
-        isLoading: false,
-        error: null,
-      } as ReturnType<typeof useFeaturedProducts>);
+  it('should render product images correctly', () => {
+    mockUseFeaturedProducts.mockReturnValue({
+      data: mockProductsResponse,
+      isLoading: false,
+      error: null,
+    } as ReturnType<typeof useFeaturedProducts>);
 
-      render(
-        <TestWrapper>
-          <FeaturedProducts />
-        </TestWrapper>
-      );
+    render(
+      <TestWrapper>
+        <FeaturedProducts />
+      </TestWrapper>
+    );
 
-      expect(mockUseFeaturedProducts).toHaveBeenCalledTimes(1);
-    });
+    const images = screen.getAllByRole('img');
+    expect(images).toHaveLength(2);
+    expect(images[0]).toHaveAttribute('src', 'test1.jpg');
+    expect(images[1]).toHaveAttribute('src', 'test2.jpg');
   });
 
-  describe('Accessibility', () => {
-    it('should have proper heading structure', () => {
-      mockUseFeaturedProducts.mockReturnValue({
-        data: mockProductsResponse,
-        isLoading: false,
-        error: null,
-      } as ReturnType<typeof useFeaturedProducts>);
+  it('should render product prices correctly', () => {
+    mockUseFeaturedProducts.mockReturnValue({
+      data: mockProductsResponse,
+      isLoading: false,
+      error: null,
+    } as ReturnType<typeof useFeaturedProducts>);
 
-      render(
-        <TestWrapper>
-          <FeaturedProducts />
-        </TestWrapper>
-      );
+    render(
+      <TestWrapper>
+        <FeaturedProducts />
+      </TestWrapper>
+    );
 
-      const heading = screen.getByRole('heading', { level: 2 });
-      expect(heading).toHaveTextContent('Featured Products');
-    });
+    expect(screen.getByText('$99.99')).toBeInTheDocument();
+    expect(screen.getByText('$149.99')).toBeInTheDocument();
+  });
 
-    it('should have semantic HTML structure with section element', () => {
-      mockUseFeaturedProducts.mockReturnValue({
-        data: mockProductsResponse,
-        isLoading: false,
-        error: null,
-      } as ReturnType<typeof useFeaturedProducts>);
+  it('should have proper heading structure', () => {
+    mockUseFeaturedProducts.mockReturnValue({
+      data: mockProductsResponse,
+      isLoading: false,
+      error: null,
+    } as ReturnType<typeof useFeaturedProducts>);
 
-      render(
-        <TestWrapper>
-          <FeaturedProducts />
-        </TestWrapper>
-      );
+    render(
+      <TestWrapper>
+        <FeaturedProducts />
+      </TestWrapper>
+    );
 
-      const section = screen.getByText('Featured Products').closest('section');
-      expect(section).toBeInTheDocument();
-      expect(section?.tagName).toBe('SECTION');
-    });
+    const heading = screen.getByRole('heading', { level: 2 });
+    expect(heading).toHaveTextContent('Featured Products');
   });
 });

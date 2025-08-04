@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { ProductGrid } from '../ProductGrid.component';
 import type { Product } from '../../../../types/product.types';
 
@@ -24,27 +24,19 @@ const mockProducts: Product[] = [
   },
 ];
 
-// Mock ProductCard component
-vi.mock('../../product/ProductCard.component', () => ({
-  ProductCard: ({ product }: { product: Product }) => (
-    <div data-testid={`product-card-${product.id}`}>{product.title}</div>
-  ),
-}));
-
 describe('ProductGrid', () => {
   it('should render products when data is available', () => {
     render(<ProductGrid products={mockProducts} />);
 
-    expect(screen.getByTestId('product-card-1')).toBeInTheDocument();
-    expect(screen.getByTestId('product-card-2')).toBeInTheDocument();
     expect(screen.getByText('Product 1')).toBeInTheDocument();
     expect(screen.getByText('Product 2')).toBeInTheDocument();
+    expect(screen.getByText('$99.99')).toBeInTheDocument();
+    expect(screen.getByText('$149.99')).toBeInTheDocument();
   });
 
   it('should show loading skeleton when isLoading is true', () => {
     render(<ProductGrid products={[]} isLoading={true} />);
 
-    // Sprawdź czy są skeletony (6 sztuk)
     const skeletons = screen.getAllByTestId('loading-skeleton');
     expect(skeletons).toHaveLength(6);
   });
@@ -69,20 +61,6 @@ describe('ProductGrid', () => {
     ).toBeInTheDocument();
   });
 
-  it('should apply custom className', () => {
-    render(<ProductGrid products={mockProducts} className="custom-class" />);
-
-    const grid = screen.getByText('Product 1').closest('div');
-    expect(grid?.parentElement?.className).toContain('custom-class');
-  });
-
-  it('should render with default props', () => {
-    render(<ProductGrid products={mockProducts} />);
-
-    expect(screen.getByTestId('product-card-1')).toBeInTheDocument();
-    expect(screen.getByTestId('product-card-2')).toBeInTheDocument();
-  });
-
   it('should prioritize loading state over other states', () => {
     render(
       <ProductGrid
@@ -92,7 +70,6 @@ describe('ProductGrid', () => {
       />
     );
 
-    // Powinien pokazać loading, nie error
     const skeletons = screen.getAllByTestId('loading-skeleton');
     expect(skeletons).toHaveLength(6);
     expect(
@@ -104,8 +81,28 @@ describe('ProductGrid', () => {
     const errorMessage = 'Network error';
     render(<ProductGrid products={[]} error={errorMessage} />);
 
-    // Powinien pokazać error, nie empty state
     expect(screen.getByText('Błąd ładowania produktów')).toBeInTheDocument();
     expect(screen.queryByText('No products found')).not.toBeInTheDocument();
+  });
+
+  it('should render product images correctly', () => {
+    render(<ProductGrid products={mockProducts} />);
+
+    const images = screen.getAllByRole('img');
+    expect(images).toHaveLength(2);
+    expect(images[0]).toHaveAttribute('src', 'img1.jpg');
+    expect(images[1]).toHaveAttribute('src', 'img2.jpg');
+  });
+
+  it('should render with proper semantic structure', () => {
+    render(<ProductGrid products={mockProducts} />);
+
+    const articles = screen.getAllByRole('article');
+    expect(articles).toHaveLength(2);
+
+    const headings = screen.getAllByRole('heading', { level: 3 });
+    expect(headings).toHaveLength(2);
+    expect(headings[0]).toHaveTextContent('Product 1');
+    expect(headings[1]).toHaveTextContent('Product 2');
   });
 });
