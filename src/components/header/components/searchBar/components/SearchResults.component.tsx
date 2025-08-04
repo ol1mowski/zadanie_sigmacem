@@ -30,7 +30,7 @@ export const SearchResults = ({
       <div className={`${styles.container} ${className}`}>
         <div className={styles.loadingContainer}>
           <LoadingSpinner size="medium" />
-          <span className={styles.loadingText}>Wyszukiwanie produktów...</span>
+          <span className={styles.loadingText}>Searching products...</span>
         </div>
       </div>
     );
@@ -40,7 +40,7 @@ export const SearchResults = ({
     return (
       <div className={`${styles.container} ${className}`}>
         <div className={styles.emptyState}>
-          <span className={styles.emptyText}>Brak wyników wyszukiwania</span>
+          <span className={styles.emptyText}>No products found</span>
         </div>
       </div>
     );
@@ -55,7 +55,7 @@ export const SearchResults = ({
             className={styles.resultItem}
             onClick={() => handleProductClick(product)}
             role="button"
-            aria-label={`Wybierz produkt: ${product.title}`}
+            aria-label={`Select product: ${product.title}`}
           >
             <div className={styles.productImage}>
               <img src={product.thumbnail} alt={product.title} loading="lazy" />
@@ -63,19 +63,14 @@ export const SearchResults = ({
             <div className={styles.productInfo}>
               <h4 className={styles.productTitle}>{product.title}</h4>
               <p className={styles.productDescription}>
-                {product.description.length > 100
-                  ? `${product.description.substring(0, 100)}...`
+                {product.description.length > 80
+                  ? `${product.description.substring(0, 80)}...`
                   : product.description}
               </p>
               <div className={styles.productPrice}>
                 <span className={styles.price}>
-                  {product.price.toFixed(2)} zł
+                  ${product.price.toFixed(2)}
                 </span>
-                {product.discountPercentage > 0 && (
-                  <span className={styles.discount}>
-                    -{product.discountPercentage.toFixed(0)}%
-                  </span>
-                )}
               </div>
             </div>
           </div>

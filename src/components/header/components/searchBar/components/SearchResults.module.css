@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   background: var(--color-background);
-  border: 1px solid rgba(150, 79, 82, 0.2);
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
   max-height: 400px;
@@ -25,11 +25,12 @@
   cursor: pointer;
   transition: all var(--transition-fast);
   gap: var(--spacing-sm);
+  will-change: background-color;
 }
 
 .resultItem:hover,
 .resultItem.selected {
-  background-color: rgba(150, 79, 82, 0.05);
+  background-color: var(--color-skeleton-bg);
 }
 
 .resultItem:focus {
@@ -43,7 +44,7 @@
   height: 60px;
   border-radius: var(--border-radius-sm);
   overflow: hidden;
-  background-color: var(--color-search-bg);
+  background-color: var(--color-background);
 }
 
 .productImage img {
@@ -59,10 +60,10 @@
 
 .productTitle {
   font-size: var(--font-size-normal);
-  font-weight: 600;
-  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-black-text);
   margin: 0 0 var(--spacing-xs) 0;
-  line-height: 1.2;
+  line-height: var(--line-height-tight);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -70,11 +71,12 @@
 
 .productDescription {
   font-size: var(--font-size-small);
-  color: var(--color-text-secondary);
+  color: var(--color-black-text);
+  opacity: 0.6;
   margin: 0 0 var(--spacing-xs) 0;
-  line-height: 1.4;
+  line-height: var(--line-height-normal);
   display: -webkit-box;
-  line-clamp: 2;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -87,17 +89,8 @@
 
 .price {
   font-size: var(--font-size-normal);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--color-red-text);
-}
-
-.discount {
-  background-color: var(--color-red-text);
-  color: white;
-  padding: 2px 6px;
-  border-radius: var(--border-radius-xs);
-  font-size: 0.75rem;
-  font-weight: 500;
 }
 
 .loadingContainer {
@@ -109,7 +102,8 @@
 }
 
 .loadingText {
-  color: var(--color-text-secondary);
+  color: var(--color-black-text);
+  opacity: 0.6;
   font-size: var(--font-size-small);
 }
 
@@ -121,7 +115,8 @@
 }
 
 .emptyText {
-  color: var(--color-text-secondary);
+  color: var(--color-black-text);
+  opacity: 0.6;
   font-size: var(--font-size-small);
 }
 
