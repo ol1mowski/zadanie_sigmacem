@@ -2,8 +2,7 @@ import { useCallback } from 'react';
 import { useDebounce } from '../../../../hooks/useDebounce.hook';
 import { useProductSearch } from '../../../../hooks/useProducts.hook';
 import { SearchResults } from './components/SearchResults.component';
-import { SearchInput } from './components/SearchInput.component';
-import { SearchError } from './components/SearchError.component';
+import { SearchInput, SearchError } from '../../../ui';
 import { useSearchState } from './hooks/useSearchState.hook';
 import { useClickOutside } from './hooks/useClickOutside.hook';
 import type { Product } from '../../../../types/product.types';
@@ -50,6 +49,7 @@ export const SearchBar = ({
         value={searchQuery}
         onChange={handleInputChange}
         onClear={handleClearSearch}
+        isLoading={isLoading}
         isResultsVisible={isResultsVisible}
       />
 

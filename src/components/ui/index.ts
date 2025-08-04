@@ -1,4 +1,9 @@
 export { ProductCard } from './product/ProductCard.component';
 export { ProductGrid } from './grid/ProductGrid.component';
 export { Logo } from './logo/Logo.component';
-export { LoadingSpinner, LoadingSkeleton } from './loading';
+export { SearchInput } from './searchInput/SearchInput.component';
+export { SearchError } from './searchError/SearchError.component';
+export { ErrorDisplay } from './error/errorDisplay/ErrorDisplay.component';
+export { ErrorBoundary } from './error/errorBoundary/ErrorBoundary.component';
+export { LoadingSpinner } from './loading/loadingSpinner/LoadingSpinner.component';
+export { LoadingSkeleton } from './loading/loadingSkeleton/LoadingSkeleton.component';

@@ -1,0 +1,14 @@
+.errorMessage {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-background);
+  color: var(--color-red-text);
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.75rem;
+  margin-top: 4px;
+  border: 1px solid var(--color-red-text);
+  z-index: var(--z-dropdown);
+}

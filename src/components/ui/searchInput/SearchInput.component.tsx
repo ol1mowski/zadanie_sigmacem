@@ -1,27 +1,33 @@
-import searchIcon from '../../../../../assets/search_icon.svg';
-import styles from '../SearchBar.module.css';
+import searchIcon from '../../../assets/search_icon.svg';
+import styles from './SearchInput.module.css';
 
 interface SearchInputProps {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onClear: () => void;
-  isResultsVisible: boolean;
+  isLoading?: boolean;
+  isResultsVisible?: boolean;
+  placeholder?: string;
+  className?: string;
 }
 
 export const SearchInput = ({
   value,
   onChange,
   onClear,
-  isResultsVisible,
+  isLoading = false,
+  isResultsVisible = false,
+  placeholder = 'Search for products',
+  className = '',
 }: SearchInputProps) => {
   return (
-    <div className={styles.searchInputContainer}>
+    <div className={`${styles.container} ${className}`}>
       <img src={searchIcon} alt="Search" className={styles.icon} />
       <input
         type="text"
         value={value}
         onChange={onChange}
-        placeholder="Search for products"
+        placeholder={placeholder}
         className={styles.input}
         aria-label="Search products"
         aria-expanded={isResultsVisible}
@@ -37,6 +43,7 @@ export const SearchInput = ({
           ×
         </button>
       )}
+      {isLoading && <div className={styles.loadingIndicator} />}
     </div>
   );
 };
