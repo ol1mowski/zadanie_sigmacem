@@ -76,8 +76,8 @@ src/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/ecommerce-showcase.git
-   cd ecommerce-showcase
+   git clone https://github.com/ol1mowski/zadanie_sigmacem.git
+   cd zadanie_sigmacem
    ```
 
 2. **Install dependencies**
