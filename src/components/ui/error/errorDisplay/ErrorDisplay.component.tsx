@@ -57,6 +57,7 @@ export const ErrorDisplay = ({
           className={styles.retryButton}
           onClick={handleRetry}
           type="button"
+          data-testid="retry-button"
         >
           Spróbuj ponownie
         </button>

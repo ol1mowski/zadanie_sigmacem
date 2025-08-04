@@ -10,7 +10,10 @@ export const LoadingSpinner = ({
   className = '',
 }: LoadingSpinnerProps) => {
   return (
-    <div className={`${styles.spinner} ${styles[size]} ${className}`}>
+    <div
+      className={`${styles.spinner} ${styles[size]} ${className}`}
+      data-testid="loading-spinner"
+    >
       <div className={styles.spinnerInner}></div>
     </div>
   );

@@ -10,7 +10,10 @@ export const LoadingSkeleton = ({
   className = '',
 }: LoadingSkeletonProps) => {
   return (
-    <div className={`${styles.skeleton} ${styles[type]} ${className}`}>
+    <div
+      className={`${styles.skeleton} ${styles[type]} ${className}`}
+      data-testid="loading-skeleton"
+    >
       {type === 'card' && (
         <>
           <div className={styles.skeletonImage}></div>
