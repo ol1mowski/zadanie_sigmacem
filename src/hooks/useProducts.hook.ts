@@ -4,6 +4,10 @@ import type { ProductsResponse } from '../types/product.types';
 
 type ApiParams = Record<string, string | number>;
 
+const sanitizeQuery = (query: string): string => {
+  return query.trim().slice(0, 100).replace(/[<>]/g, '').replace(/\s+/g, ' ');
+};
+
 const fetchProducts = async (
   endpoint: string,
   params: ApiParams = {}
@@ -19,11 +23,15 @@ const fetchProducts = async (
 };
 
 export const useProductSearch = (query: string) => {
+  const sanitizedQuery = sanitizeQuery(query);
+
   return useQuery({
-    queryKey: ['products', 'search', query],
+    queryKey: ['products', 'search', sanitizedQuery],
     queryFn: () =>
-      fetchProducts(API_CONFIG.ENDPOINTS.PRODUCTS_SEARCH, { q: query }),
-    enabled: query.trim().length > 0,
+      fetchProducts(API_CONFIG.ENDPOINTS.PRODUCTS_SEARCH, {
+        q: sanitizedQuery,
+      }),
+    enabled: sanitizedQuery.length > 0 && sanitizedQuery.length <= 100,
     staleTime: 2 * 60 * 1000,
     gcTime: 5 * 60 * 1000,
     retry: 2,
