@@ -20,59 +20,6 @@
   }
 }
 
-/* Loading skeleton styles */
-.loading {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
-
-.skeleton {
-  background: white;
-  border-radius: var(--border-radius-md);
-  overflow: hidden;
-  height: 280px;
-  animation: skeletonPulse 1.5s ease-in-out infinite;
-}
-
-.skeletonImage {
-  width: 100%;
-  height: 200px;
-  background: var(--color-background);
-  animation: skeletonPulse 1.5s ease-in-out infinite;
-}
-
-.skeletonContent {
-  padding: var(--spacing-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.skeletonTitle {
-  height: 16px;
-  background: var(--color-background);
-  border-radius: var(--border-radius-sm);
-  width: 80%;
-  animation: skeletonPulse 1.5s ease-in-out infinite;
-}
-
-.skeletonPrice {
-  height: 14px;
-  background: var(--color-background);
-  border-radius: var(--border-radius-sm);
-  width: 40%;
-  animation: skeletonPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes skeletonPulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
 /* Error state styles */
 .error {
   display: flex;

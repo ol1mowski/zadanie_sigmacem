@@ -74,7 +74,7 @@
   margin: 0 0 var(--spacing-xs) 0;
   line-height: 1.4;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -108,15 +108,6 @@
   gap: var(--spacing-sm);
 }
 
-.loadingSpinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid transparent;
-  border-top: 2px solid var(--color-red-text);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
 .loadingText {
   color: var(--color-text-secondary);
   font-size: var(--font-size-small);
@@ -132,15 +123,6 @@
 .emptyText {
   color: var(--color-text-secondary);
   font-size: var(--font-size-small);
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 /* Responsive Design */

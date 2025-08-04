@@ -1,4 +1,5 @@
 import type { Product } from '../../../../../types/product.types';
+import { LoadingSpinner } from '../../../../ui/loading/loadingSpinner/LoadingSpinner.component';
 import styles from './SearchResults.module.css';
 
 interface SearchResultsProps {
@@ -28,7 +29,7 @@ export const SearchResults = ({
     return (
       <div className={`${styles.container} ${className}`}>
         <div className={styles.loadingContainer}>
-          <div className={styles.loadingSpinner} />
+          <LoadingSpinner size="medium" />
           <span className={styles.loadingText}>Wyszukiwanie produktów...</span>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { ProductCard } from '../product/ProductCard.component';
+import { LoadingSkeleton } from '../loading/loadingSkeleton/LoadingSkeleton.component';
 import type { Product } from '../../../types/product.types';
 import styles from './ProductGrid.module.css';
 
@@ -17,15 +18,9 @@ export const ProductGrid = ({
 }: ProductGridProps) => {
   if (isLoading) {
     return (
-      <div className={`${styles.productGrid} ${styles.loading} ${className}`}>
+      <div className={`${styles.productGrid} ${className}`}>
         {Array.from({ length: 6 }, (_, index) => (
-          <div key={index} className={styles.skeleton}>
-            <div className={styles.skeletonImage}></div>
-            <div className={styles.skeletonContent}>
-              <div className={styles.skeletonTitle}></div>
-              <div className={styles.skeletonPrice}></div>
-            </div>
-          </div>
+          <LoadingSkeleton key={index} type="card" />
         ))}
       </div>
     );

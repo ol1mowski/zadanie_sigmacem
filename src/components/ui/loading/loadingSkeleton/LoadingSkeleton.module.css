@@ -1,0 +1,69 @@
+.skeleton {
+  background: white;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+.skeletonImage {
+  width: 100%;
+  height: 200px;
+  background: var(--color-background);
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+.skeletonContent {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.skeletonTitle {
+  height: 16px;
+  background: var(--color-background);
+  border-radius: var(--border-radius-sm);
+  width: 80%;
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+.skeletonPrice {
+  height: 14px;
+  background: var(--color-background);
+  border-radius: var(--border-radius-sm);
+  width: 40%;
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+.skeletonText {
+  height: 16px;
+  background: var(--color-background);
+  border-radius: var(--border-radius-sm);
+  width: 100%;
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+/* Types */
+.card {
+  height: 280px;
+}
+
+.text {
+  height: 16px;
+  padding: 0;
+}
+
+.image {
+  height: 200px;
+  padding: 0;
+}
+
+@keyframes skeletonPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
