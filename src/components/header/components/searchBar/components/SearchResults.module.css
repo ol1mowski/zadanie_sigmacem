@@ -3,7 +3,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
+  background: var(--color-background);
   border: 1px solid rgba(150, 79, 82, 0.2);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
@@ -43,7 +43,7 @@
   height: 60px;
   border-radius: var(--border-radius-sm);
   overflow: hidden;
-  background-color: #f5f5f5;
+  background-color: var(--color-search-bg);
 }
 
 .productImage img {
@@ -92,7 +92,7 @@
 }
 
 .discount {
-  background-color: #ff4444;
+  background-color: var(--color-red-text);
   color: white;
   padding: 2px 6px;
   border-radius: var(--border-radius-xs);

@@ -74,12 +74,6 @@
   right: var(--spacing-sm);
   top: 50%;
   transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  border: 2px solid transparent;
-  border-top: 2px solid var(--color-red-text);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
   z-index: 1;
 }
 
@@ -97,18 +91,105 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #fee;
-  color: #c53030;
+  background-color: var(--color-background);
+  color: var(--color-red-text);
   padding: var(--spacing-xs);
   border-radius: var(--border-radius-sm);
   font-size: 0.75rem;
   margin-top: 4px;
-  border: 1px solid #feb2b2;
+  border: 1px solid var(--color-red-text);
   z-index: var(--z-dropdown);
 }
 
 .searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-search-bg);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 4px;
+  max-height: 300px;
+  overflow-y: auto;
   z-index: var(--z-dropdown);
+}
+
+.loadingState {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  color: var(--color-red-text);
+  font-size: var(--font-size-small);
+}
+
+.resultsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  border-bottom: 1px solid var(--color-search-bg);
+}
+
+.resultItem:last-child {
+  border-bottom: none;
+}
+
+.resultItem:hover {
+  background-color: var(--color-search-bg);
+}
+
+.resultItem:focus {
+  outline: none;
+  background-color: var(--color-search-bg);
+}
+
+.productImage {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  flex-shrink: 0;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.productTitle {
+  font-size: var(--font-size-small);
+  color: var(--color-black-text);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productPrice {
+  font-size: var(--font-size-small);
+  color: var(--color-red-text);
+  font-weight: 600;
+}
+
+.noResults {
+  padding: var(--spacing-md);
+  text-align: center;
+  color: var(--color-red-text);
+  font-size: var(--font-size-small);
 }
 
 /* Responsive Design */
