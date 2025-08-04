@@ -1,6 +1,6 @@
 .featuredProducts {
   padding: var(--spacing-2xl) 0;
-  background: white;
+  background: var(--color-background);
 }
 
 .container {

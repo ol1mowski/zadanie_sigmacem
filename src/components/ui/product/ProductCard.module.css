@@ -1,15 +1,17 @@
 .productCard {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: var(--color-background);
   border-radius: var(--border-radius-md);
   overflow: hidden;
   cursor: pointer;
   transition: transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
 }
 
 .productCard:hover {
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .imageContainer {
@@ -30,6 +32,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+  flex: 1;
 }
 
 .title {
@@ -38,6 +41,9 @@
   color: var(--color-black-text);
   margin: 0;
   line-height: var(--line-height-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .price {
@@ -48,6 +54,16 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .content {
+    padding: var(--spacing-sm);
+  }
+
+  .title {
+    font-size: 0.875rem;
+  }
+}
+
 @media (max-width: 768px) {
   .content {
     padding: var(--spacing-sm);
@@ -59,5 +75,19 @@
 
   .price {
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: var(--spacing-xs);
+  }
+
+  .title {
+    font-size: 0.8rem;
+  }
+
+  .price {
+    font-size: 0.7rem;
   }
 }
