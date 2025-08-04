@@ -1,0 +1,24 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: var(--spacing-lg) 0;
+  background-color: var(--color-background);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main {
+    padding: var(--spacing-md) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: var(--spacing-sm) 0;
+  }
+}

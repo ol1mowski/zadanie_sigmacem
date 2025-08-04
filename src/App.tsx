@@ -1,4 +1,4 @@
-import { Header } from './components/layout/Header.component';
+import { Layout } from './components/layout';
 import { FeaturedProducts } from './components/featuredProducts/FeaturedProducts.component';
 import { NewArrivals } from './components/newArrivals/NewArrivals.component';
 import { ErrorBoundary } from './components/ui/error/errorBoundary/ErrorBoundary.component';
@@ -6,13 +6,12 @@ import { ErrorBoundary } from './components/ui/error/errorBoundary/ErrorBoundary
 function App() {
   return (
     <ErrorBoundary>
-      <div className="app">
-        <Header />
-        <main className="container">
+      <Layout>
+        <div className="container">
           <FeaturedProducts />
           <NewArrivals />
-        </main>
-      </div>
+        </div>
+      </Layout>
     </ErrorBoundary>
   );
 }
