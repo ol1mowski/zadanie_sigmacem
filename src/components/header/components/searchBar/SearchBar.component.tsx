@@ -19,8 +19,8 @@ export const SearchBar = ({
   onSearchStateChange,
   onProductSelect,
 }: SearchBarProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isResultsVisible, setIsResultsVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [isResultsVisible, setIsResultsVisible] = useState<boolean>(false);
   const debouncedQuery = useDebounce(searchQuery, 300);
   const containerRef = useRef<HTMLDivElement>(null);
 
