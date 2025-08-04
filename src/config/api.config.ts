@@ -2,8 +2,6 @@ export const API_CONFIG = {
   BASE_URL: 'https://dummyjson.com',
   ENDPOINTS: {
     PRODUCTS: '/products',
-    PRODUCT_CATEGORIES: '/products/categories',
-    PRODUCT_CATEGORY_LIST: '/products/category-list',
     PRODUCTS_SEARCH: '/products/search',
   },
   DEFAULT_LIMIT: 8,
